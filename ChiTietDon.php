@@ -1,14 +1,14 @@
 <?php
-require_once "KiemTra.php";
 include "ChiTietMay.php";
+include "KiemTra.php";
 
 class ChiTietDon extends ChiTietMay {
     private $giaTien;
     private $khoiLuong;
     public function nhapChiTiet() {
         parent::nhapChiTiet();
-        $this->giaTien = KiemTra::inputIn($this->giaTien, 'Nhap gia tien: ');
-        $this->khoiLuong = KiemTra::inputIn($this->giaTien, 'Nhap khoi luong: ');
+        $this->giaTien = KiemTra::nhapGiaTien($this->giaTien);
+        $this->khoiLuong = KiemTra::nhapKhoiLuong($this->giaTien);
     }
     public function xuatChiTiet() {
         parent::xuatChitiet();

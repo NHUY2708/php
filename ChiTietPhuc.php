@@ -7,10 +7,11 @@ class ChiTietPhuc extends ChiTietMay {
     private $soLuong;
     public function nhapChiTiet() {
         parent::nhapChiTiet();
-        $this->soLuong = readline('Nhập số lượng chi tiết con: ');
+        $this->soLuong = readline('Nhập số lượng chi tiết trong chi tiết phức: ');
         $chiTiet = [];
         for ($i = 0;$i < $this->soLuong;$i++) {
             $loaiCT = 0;
+
             $loaiCT = KiemTra::chonLoai($loaiCT);
             if ($loaiCT == 1) {
                 $chiTiet = new ChiTietDon();
@@ -19,9 +20,10 @@ class ChiTietPhuc extends ChiTietMay {
                     $chiTiet = new ChiTietPhuc();
                 }
             }
+            $chiTiet->nhapChiTiet();
+            array_push($this->arrChiTietCon, $chiTiet);
         }
-        $chiTiet->nhapChiTiet();
-        array_push($this->arrChiTietCon, $chiTiet);
+       
     }
     public function xuatChitiet() {
         parent::xuatChitiet();
